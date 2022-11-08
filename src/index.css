@@ -5,19 +5,22 @@
   font-weight: 400;
 }
 
+/* Badge Component */
+
 section {
   line-height: 1.3;
 }
 
 .badge {
-  padding: 2px 5px;
+  padding: 5px 10px;
+  margin: 5px;
   border-radius: 3px;
   color: white;
   font-size: .8rem;
   font-weight: bold;
   letter-spacing: 1px;
   text-transform: uppercase;
-  max-width: 100px;
+  display: inline-block;
 }
 
 .red {
@@ -35,4 +38,32 @@ section {
 
 .blue {
   background: #41A5E1;
+}
+
+/* Mood Component */
+
+input {
+    margin: 5px 0;
+    padding: 5px;
+    min-width: 250px;
+}
+
+.counterInput button {
+  margin: 5px;
+  margin-left: 0;
+  background: #41A5E1;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.counterInput.tooLong {
+  color: red;
+}
+
+.counterInput.tooLong textarea {
+  background: #eebbbb;
 }
