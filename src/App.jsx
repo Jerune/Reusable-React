@@ -15,7 +15,6 @@ function App () {
 
       <h2>Mood Tracker</h2>
       <Mood text={'How was your day?'} defaults={defaultMoods}/>
-
     </section>
   )
 }

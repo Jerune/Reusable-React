@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 
 export default function Mood ({ text, defaults }) {
   const [inputValue, setInputValue] = useState('')
-  const maxLength = 20
+  const maxLength = 100
 
   function handleChange (event) {
     setInputValue(event.target.value)
