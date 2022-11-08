@@ -5,8 +5,8 @@ module.exports = {
   },
   extends: [
     'plugin:react/recommended',
-    'standard',
-    'prettier'
+    'prettier',
+    'standard'
   ],
   parserOptions: {
     ecmaFeatures: {

@@ -1,23 +1,23 @@
-import React, { useState } from "react"
-import PropTypes from "prop-types"
+import React, { useState } from 'react'
+import PropTypes from 'prop-types'
 
 export default function Mood ({ text, defaults }) {
   const [inputValue, setInputValue] = useState('')
-    const maxLength = 280
-  
-    function handleChange(event){
-        setInputValue(event.target.value)
-    }
+  const maxLength = 20
 
-function pushInput(value){
+  function handleChange (event) {
+    setInputValue(event.target.value)
+  }
+
+  function pushInput (value) {
     setInputValue(value)
-}
+  }
 
-function countCharacters(){
-    return inputValue.split(" ").join("").length
-}
+  function countCharacters () {
+    return inputValue.split(' ').join('').length
+  }
 
-  return <div className="counterInput">
+  return <div className={`counterInput ${inputValue.length > maxLength ? 'tooLong' : ''}`}>
     <div>
       {defaults.map((value, index) => {
         return <button onClick={() => pushInput(value)} key={index}>{value}</button>
@@ -33,6 +33,6 @@ function countCharacters(){
 }
 
 Mood.propTypes = {
-    text: PropTypes.string.isRequired,
-    defaults: PropTypes.array
+  text: PropTypes.string.isRequired,
+  defaults: PropTypes.array
 }
