@@ -76,7 +76,7 @@ export default function CharacterSheet () {
 
   return (
     <>
-      <div className={`App ${darkMode ? 'darkmode' : ''}`}>
+      <div className={`Character ${darkMode ? 'darkmode' : ''}`}>
         <button
           onClick={() => {
             // setDarkMode(!darkMode)
