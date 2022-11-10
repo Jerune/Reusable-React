@@ -3,15 +3,39 @@ import React, { useReducer } from 'react'
 import friendlyWords from 'friendly-words'
 
 // Custom Hook
-function useCharacterSheet () {
+function useCharacterSheetState () {
   const [state, dispatch] = useReducer((state, action) => {
-    return { ...state, [action.type]: action.value }
+    switch (action.type) {
+      case 'SET_BACKGROUND': {
+        return { ...state, background: action.value, error: null }
+      }
+      case 'NONEXISTENT_BACKGROUND': {
+        return { ...state, error: 'This background does NOT exist.' }
+      }
+      case 'TOGGLE_DARK_MODE': {
+        return { ...state, darkMode: !state.darkMode }
+      }
+      case 'INPUT_NAME': {
+        if (action.value.length > 15) {
+          return { ...state, name: action.name, error: 'Name is WAY too long, bucko' }
+        } else {
+          return { ...state, name: action.value }
+        }
+      }
+      case 'DISMISS_ERROR': {
+        return { ...state, error: null }
+      }
+      case 'RANDOMIZE_VALS': {
+        return { ...state, name: randomName(), background: randomBackground() }
+      }
+    }
   }, {
     darkMode: false,
     name: '',
     background: '',
-    error: ''
+    error: null
   })
+
   return [state, dispatch]
 }
 
@@ -38,26 +62,25 @@ function randomName () {
 
 // Component
 export default function CharacterSheet () {
-  const [state, dispatch] = useCharacterSheet()
+  const [{ darkMode, name, background, error }, dispatch] = useCharacterSheetState()
 
   function handleBackgroundSelect (event) {
     const value = event.target.value
-    dispatch({ type: 'background', value })
+    // setBackground(value)
+    dispatch({ type: 'SET_BACKGROUND', value })
     if (!backgrounds.includes(value)) {
-      dispatch({ type: 'error', value: 'This background does NOT exist.' })
-    } else {
-      dispatch({ type: 'error', value: '' })
+      // setError('This background does NOT exist.')
+      dispatch({ type: 'NONEXISTENT_BACKGROUND' })
     }
   }
 
-  const { darkMode, name, background, error } = state
-
   return (
     <>
-      <div className={`Character ${darkMode ? 'darkmode' : ''}`}>
+      <div className={`App ${darkMode ? 'darkmode' : ''}`}>
         <button
           onClick={() => {
-            dispatch({ type: 'darkMode', value: !darkMode })
+            // setDarkMode(!darkMode)
+            dispatch({ type: 'TOGGLE_DARK_MODE' })
           }}
         >
           Dark Mode {darkMode ? 'ON' : 'OFF'}
@@ -68,10 +91,7 @@ export default function CharacterSheet () {
           placeholder="Type your name"
           value={name}
           onChange={(event) => {
-            dispatch({ type: 'name', value: event.target.value })
-            if (event.target.value.length > 15) {
-              dispatch({ type: 'error', value: 'Name is WAY too long, bucko.' })
-            }
+            dispatch({ type: 'INPUT_NAME', value: event.target.value })
           }}
         />
         <select value={background} onChange={handleBackgroundSelect}>
@@ -84,7 +104,8 @@ export default function CharacterSheet () {
             {error}
             <button
               onClick={() => {
-                dispatch({ type: 'error', value: '' })
+                // setError(null)
+                dispatch({ type: 'DISMISS_ERROR' })
               }}
             >
               Dismiss
@@ -97,8 +118,9 @@ export default function CharacterSheet () {
         </div>
         <button
           onClick={() => {
-            dispatch({ type: 'name', value: randomName() })
-            dispatch({ type: 'background', value: randomBackground() })
+            dispatch({ type: 'RANDOMIZE_VALS' })
+            // setName(randomName())
+            // setBackground(randomBackground())
           }}
         >
           Do it all for me instead
