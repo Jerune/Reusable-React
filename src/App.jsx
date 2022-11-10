@@ -1,5 +1,6 @@
 import React from 'react'
 import Badge from './components/Badge'
+import CharacterSheet from './components/CharacterSheet'
 import Mood from './components/Mood'
 import ReusableForm from './components/ReusableForm'
 
@@ -19,6 +20,9 @@ function App () {
 
       <h2>Togglable Form</h2>
       <ReusableForm />
+
+      <h2>Character Sheet</h2>
+      <CharacterSheet />
     </section>
   )
 }

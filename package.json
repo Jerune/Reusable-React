@@ -9,6 +9,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "friendly-words": "^1.2.0",
     "prettier": "^2.7.1",
     "prop-types": "^15.8.1",
     "react": "^18.2.0",

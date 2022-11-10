@@ -94,3 +94,42 @@ button {
 button:focus {
   background: #3d6d8a;
 }
+
+/* Togglable form component */
+
+.Character {
+  padding: 5px;
+  width: 100vw;
+  height: 100vh;
+  font-family: sans-serif;
+  text-align: left;
+  max-width: 350px;
+}
+.Character.darkmode {
+  background: black;
+  color: white;
+}
+
+.Character button,
+.Character input,
+.Character select {
+  margin: 5px;
+  padding: 5px;
+  background: white;
+  border: 3px solid black;
+  color: black;
+}
+.darkmode button,
+.darkmode input,
+.darkmode select {
+  background: black;
+  border: 3px solid white;
+  color: white;
+}
+.error {
+  color: red;
+}
+.sheet {
+  margin: 5px auto;
+  text-align: left;
+}
