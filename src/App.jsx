@@ -3,6 +3,7 @@ import Badge from './components/Badge'
 import CharacterSheet from './components/CharacterSheet'
 import Mood from './components/Mood'
 import ReusableForm from './components/ReusableForm'
+import UserData from './components/UserData'
 
 function App () {
   const defaultMoods = ['Great', 'Okay', 'Bad']
@@ -23,6 +24,8 @@ function App () {
 
       <h2>Character Sheet</h2>
       <CharacterSheet />
+
+      <UserData />
     </section>
   )
 }
