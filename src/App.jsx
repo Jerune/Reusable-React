@@ -1,6 +1,7 @@
 import React from 'react'
 import Badge from './components/Badge'
 import Mood from './components/Mood'
+import ReusableForm from './components/ReusableForm'
 
 function App () {
   const defaultMoods = ['Great', 'Okay', 'Bad']
@@ -15,6 +16,9 @@ function App () {
 
       <h2>Mood Tracker</h2>
       <Mood text={'How was your day?'} defaults={defaultMoods}/>
+
+      <h2>Togglable Form</h2>
+      <ReusableForm />
     </section>
   )
 }

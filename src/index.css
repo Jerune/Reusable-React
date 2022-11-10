@@ -2,9 +2,6 @@
   font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
   font-size: 16px;
   font-weight: 400;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
 }
 
 /* Badge Component */
@@ -45,12 +42,6 @@ section {
 
 /* Mood Component */
 
-input {
-    margin: 5px 0;
-    padding: 5px;
-    min-width: 250px;
-}
-
 .counterInput button {
   margin: 5px;
   margin-left: 0;
@@ -69,4 +60,37 @@ input {
 
 .counterInput.tooLong textarea {
   background: #eebbbb;
+}
+
+/* Togglable form component */
+
+form{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+input {
+  margin: 5px 0;
+  padding: 5px;
+  min-width: 250px;
+  border: 1px solid black;
+  border-radius: 5px;
+}
+
+button {
+  margin: 5px;
+  margin-left: 0;
+  background: #41A5E1;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+button:focus {
+  background: #3d6d8a;
 }
